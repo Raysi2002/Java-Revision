@@ -1,16 +1,23 @@
 package exceptionhandling;
 
-public class BasicsOfTryCatch {
+public class TryWithMultipleCatch {
     public static void main(String[] args) {
         try {
-            // Definition: Code that might throw an exception is placed in the try block.
-            // Use Case: This code attempts to divide 100 by 0, which is not allowed and will throw an ArithmeticException.
-            int x = 100 / 0;
-            System.out.println(x); // This line won't execute due to the exception above.
-        } catch (ArithmeticException e) {
-            // Purpose: This block catches ArithmeticException and handles it gracefully by printing a user-friendly message.
-            System.out.println("Arithmetic exception has occurred, please look it once");
+            // Definition: The try block contains code that might throw multiple types of exceptions.
+            // Use Case: Accessing an invalid index in an array.
+            int[] arr = {1, 2, 3, 4, 5};
+            System.out.println(arr[6]); // Throws ArrayIndexOutOfBoundsException.
+
+            // Use Case: Accessing an invalid character index in a string.
+            String str = "Hey Bae....";
+            System.out.println(str.charAt(15)); // Throws StringIndexOutOfBoundsException.
+        } catch (ArrayIndexOutOfBoundsException e) {
+            // Purpose: Handles scenarios where the program tries to access an array index that does not exist.
+            System.out.println("Array index is out of bound");
+        } catch (StringIndexOutOfBoundsException e) {
+            // Purpose: Handles scenarios where the program tries to access a string character index that does not exist.
+            System.out.println("Character is out of index");
         }
-        // Overall Purpose: Demonstrates the use of a single catch block to handle specific exceptions.
+        // Overall Purpose: Demonstrates the use of multiple catch blocks to handle different types of exceptions specifically.
     }
 }
