@@ -104,6 +104,7 @@ Example Usage
 
 import java.util.Optional;
 
+```java
 public class OptionalExample {
 public static void main(String[] args) {
 // Creating Optional
@@ -123,6 +124,5 @@ Optional<String> optional = Optional.ofNullable("Hello");
         optional.filter(value -> value.startsWith("H"))
                 .ifPresent(value -> System.out.println("Filtered Value: " + value));
     }
-}
+}```
 
-This example demonstrates the versatility and power of the Optional class in avoiding null-related issues.
