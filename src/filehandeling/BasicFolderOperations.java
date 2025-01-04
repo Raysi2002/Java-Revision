@@ -5,23 +5,37 @@ import java.nio.file.FileAlreadyExistsException;
 
 public class BasicFolderOperations {
     public static void main(String[] args) {
-//        String path = "/Users/raysi2002/SpringFramework/SpringDataJPA/java-revision/src/filehandeling/testing/test-2";
-//        for(int i = 0; i <= 20; i++){
-//            String path = STR."/Users/raysi2002/SpringFramework/SpringDataJPA/java-revision/src/filehandeling/testing/test-\{i}";
+//        long startTime = System.currentTimeMillis();
+////        String path = "/Users/raysi2002/SpringFramework/SpringDataJPA/java-revision/src/filehandeling/testing/test-2";
+//        for(int i = 0; i <= 2000; i++){
+//            String path = STR."src/filehandeling/testing/test-\{i}";
 //            createFolder(path);
 //        }
+//        long endTime = System.currentTimeMillis();
+//        System.out.println((endTime - startTime) );
 
 //        for(int i = 0; i <= 50; i++){
 //            String path = STR."/Users/raysi2002/SpringFramework/SpringDataJPA/java-revision/src/filehandeling/testing/test-\{i}";
 //            System.out.println(STR."test-\{i} : \{folderExists(path)}");
 //        }
 
-//        for(int i = 0; i <= 50; i++){
+//        for(int i = 0; i <= 2000; i++){
 //            String path = STR."/Users/raysi2002/SpringFramework/SpringDataJPA/java-revision/src/filehandeling/testing/test-\{i}";
 //            System.out.println(STR."test-\{i} : \{deleteFolder(path)}");
 //        }
-        String path = STR."/Users/raysi2002/SpringFramework/SpringDataJPA/java-revision/src/filehandeling/testing";
-        System.out.println(deleteFolder(path));
+
+//        String path = STR."/Users/raysi2002/SpringFramework/SpringDataJPA/java-revision/src/filehandeling/testing";
+//        System.out.println(deleteFolder(path));
+
+//        String oldPath = STR."src/filehandeling/renamed";
+//        String newPath = STR."src/filehandeling/testing";
+//        System.out.println(renameFolder(oldPath, newPath));
+
+//        long startTime = System.currentTimeMillis();
+//        deleteFolderWithFiles(STR."src/filehandeling/testing");
+//        long endTime = System.currentTimeMillis();
+//        System.out.println(endTime - startTime);
+
 
     }
 
@@ -61,14 +75,28 @@ public class BasicFolderOperations {
         return false;
     }
 
+    static boolean renameFolder(String oldPath, String newPath){
+        File oldFile = new File(oldPath);
+        File newFile = new File(newPath);
+        if(oldFile.exists()){
+            return oldFile.renameTo(newFile);
+        }else
+            return false;
+    }
 
 
-//    static void deleteFolderWithFiles(String path){
-//        try{
-//            File file = new File(path);
-//            if()
-//        }catch (Exception e){
-//            throw new RuntimeException("Something went wrong in deleteFolderWithFiles method");
-//        }
-//    }
+
+    static void deleteFolderWithFiles(String path){
+        try{
+            File file = new File(path);
+            if(file.exists()){
+                for(File f : file.listFiles()){
+                    f.delete();
+                }
+                file.delete();
+            }
+        }catch (Exception e){
+            throw new RuntimeException("Something went wrong in deleteFolderWithFiles method");
+        }
+    }
 }
